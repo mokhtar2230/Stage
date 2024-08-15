@@ -21,8 +21,11 @@ def insert_report(user_id, file_path):
     finally:
         if connection.is_connected():
             connection.close()
-def create_output_directory(base_path='D:\\Stageprimatec'):
-    """Create an output directory named 'result'."""
+def create_output_directory(base_path=None):
+
+    if base_path is None:
+        base_path = os.getcwd() 
+
     output_dir = os.path.join(base_path, 'result')
     os.makedirs(output_dir, exist_ok=True)
     return output_dir
